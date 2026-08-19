@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081b1a">
+  <meta name="description" content="生态安全领域专利导航课程体系与创新创业人才培养平台">
+  <title>生态智图｜生态安全专利导航</title>
+  <style>
+    :root { --ink:#f5f0e6; --muted:#b9c9c0; --green:#8ed3a8; --deep:#071a19; --panel:rgba(14,45,41,.76); --line:rgba(206,236,218,.18); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:#071a19; font-family: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif; line-height:1.7; }
+    a { color:inherit; text-decoration:none; }
+    .page { min-height:100vh; overflow:hidden; background: radial-gradient(circle at 78% 8%, rgba(98,153,124,.33), transparent 32rem), linear-gradient(135deg,#071a19 0%,#0b2c27 55%,#102d2c 100%); }
+    .page:before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.22; background-image: linear-gradient(rgba(164,216,180,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(164,216,180,.12) 1px,transparent 1px); background-size:48px 48px; mask-image:linear-gradient(to bottom,black,transparent 82%); }
+    .nav { position:relative; z-index:2; max-width:1240px; margin:auto; padding:28px 28px 12px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:12px; letter-spacing:.18em; font-size:12px; font-weight:700; color:var(--green); }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border:1px solid rgba(142,211,168,.55); border-radius:50%; font-size:16px; }
+    .nav-links { display:flex; align-items:center; gap:25px; color:#cad7cf; font-size:14px; }
+    .nav-links a:hover { color:#fff; }
+    .nav-cta { border:1px solid rgba(142,211,168,.55); border-radius:999px; padding:8px 16px; color:#e6fff0; }
+    .hero { position:relative; z-index:1; max-width:1240px; margin:auto; min-height:650px; padding:80px 28px 70px; display:grid; grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr); align-items:center; gap:58px; }
+    .eyebrow { display:flex; align-items:center; gap:10px; color:var(--green); font-size:12px; letter-spacing:.23em; font-weight:700; text-transform:uppercase; }
+    .eyebrow:before { content:""; width:34px; height:1px; background:var(--green); }
+    h1 { margin:24px 0 20px; max-width:760px; font-family: Georgia, "Noto Serif SC", serif; font-size:clamp(44px,6.3vw,84px); font-weight:400; line-height:1.12; letter-spacing:.02em; }
+    .hero-copy { max-width:620px; color:#c6d4cc; font-size:17px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:13px; margin-top:34px; }
+    .button { display:inline-flex; align-items:center; gap:10px; border-radius:4px; padding:13px 20px; font-size:14px; transition:transform .2s,background .2s; }
+    .button:hover { transform:translateY(-2px); }
+    .button-primary { color:#09231e; background:#9bdfb2; font-weight:700; }
+    .button-secondary { border:1px solid var(--line); background:rgba(255,255,255,.04); color:#f0f6f1; }
+    .hero-note { margin-top:24px; color:#94aea0; font-size:12px; }
+    .orbital { position:relative; min-height:430px; display:grid; place-items:center; }
+    .orbital:before,.orbital:after { content:""; position:absolute; border:1px solid rgba(142,211,168,.25); border-radius:50%; transform:rotate(-20deg); }
+    .orbital:before { width:390px; height:250px; }
+    .orbital:after { width:290px; height:190px; transform:rotate(34deg); border-color:rgba(224,205,137,.3); }
+    .planet { width:250px; height:250px; border-radius:50%; position:relative; overflow:hidden; background:radial-gradient(circle at 33% 26%,#bde7bf 0 4%,transparent 5%),radial-gradient(ellipse at 40% 40%,#397d61 0 13%,transparent 14%),radial-gradient(ellipse at 70% 55%,#8dc67d 0 13%,transparent 14%),radial-gradient(circle at 48% 63%,#1a5144 0 26%,transparent 27%),linear-gradient(140deg,#4caa75,#123c3b 72%); box-shadow:0 0 70px rgba(107,207,145,.25), inset -32px -12px 42px rgba(0,0,0,.38); }
+    .planet:before { content:""; position:absolute; inset:18px; border:1px solid rgba(215,245,219,.55); border-radius:50%; opacity:.6; }
+    .orbit-label { position:absolute; padding:8px 12px; border:1px solid var(--line); background:rgba(5,25,23,.8); color:#cde9d4; font-size:12px; letter-spacing:.08em; }
+    .label-a { top:18%; right:3%; } .label-b { bottom:17%; left:1%; } .label-c { top:6%; left:7%; }
+    .section { position:relative; z-index:1; max-width:1240px; margin:auto; padding:78px 28px; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:28px; margin-bottom:28px; }
+    .section-kicker { color:var(--green); font-size:12px; letter-spacing:.2em; font-weight:700; }
+    h2 { margin:7px 0 0; font-family:Georgia,"Noto Serif SC",serif; font-weight:400; font-size:clamp(30px,4vw,50px); line-height:1.2; }
+    .section-intro { max-width:470px; color:#a9bdb2; font-size:14px; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:56px; }
+    .stat { padding:24px 20px; border-right:1px solid var(--line); } .stat:last-child{border-right:0;}
+    .stat strong { display:block; color:#dff3df; font:400 38px Georgia,serif; } .stat span { color:#9bb2a4; font-size:13px; }
+    .topics { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .topic { min-height:142px; padding:20px; background:var(--panel); border:1px solid var(--line); transition:border-color .2s, transform .2s; }
+    .topic:hover { border-color:rgba(142,211,168,.7); transform:translateY(-3px); }
+    .topic small { color:#d1c789; letter-spacing:.16em; font-size:10px; } .topic h3 { margin:12px 0 4px; font-family:Georgia,"Noto Serif SC",serif; font-size:20px; font-weight:400; } .topic p { margin:0; color:#9bb2a4; font-size:12px; }
+    .pathway { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .path-card { background:linear-gradient(145deg,rgba(29,72,61,.9),rgba(9,35,32,.8)); border:1px solid var(--line); padding:30px; min-height:240px; }
+    .path-card h3 { margin:0 0 12px; font-family:Georgia,"Noto Serif SC",serif; font-size:28px; font-weight:400; } .path-card p { color:#adc2b5; font-size:14px; max-width:490px; }
+    .path-list { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 0; } .path-list span { border:1px solid var(--line); padding:5px 10px; color:#c4dccb; font-size:12px; }
+    .footer { position:relative; z-index:1; border-top:1px solid var(--line); max-width:1184px; margin:auto; padding:24px 28px 35px; display:flex; justify-content:space-between; gap:18px; color:#8ea79a; font-size:12px; }
+    @media (max-width:800px) { .nav-links a:not(.nav-cta){display:none;} .hero{grid-template-columns:1fr; padding-top:58px; min-height:auto;} .orbital{min-height:320px; transform:scale(.82);} .stats{grid-template-columns:repeat(2,1fr);} .stat:nth-child(2){border-right:0;} .stat:nth-child(-n+2){border-bottom:1px solid var(--line);} .topics{grid-template-columns:repeat(2,1fr);} .pathway{grid-template-columns:1fr;} .footer{display:block;} .footer span{display:block;margin-top:8px;} }
+    @media (max-width:460px) { .hero{padding-left:20px;padding-right:20px;} .section{padding-left:20px;padding-right:20px;} .nav{padding-left:20px;padding-right:20px;} .topics{grid-template-columns:1fr;} h1{font-size:44px;} .hero-copy{font-size:15px;} }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="brand" href="./"><span class="brand-mark">⌁</span><span>ECO PATENT WORKBENCH</span></a>
+      <div class="nav-links"><a href="#topics">生态技术领域</a><a href="#course">课程体系</a><a href="https://eco-security-patent-navigation.wuxinsci.workers.dev/login?next=%2Fplatform" class="nav-cta">进入虚拟仿真平台 ↗</a></div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">答辩展示入口 · 2025FR002</div>
+          <h1>让生态安全<br>看得见、学得会。</h1>
+          <p class="hero-copy">生态安全领域专利导航课程体系与创新创业人才培养平台。以公开专利数据为基础，连接技术分类、地级市解析、空间地图、仿真实验和项目孵化。</p>
+          <div class="hero-actions"><a class="button button-primary" href="https://eco-security-patent-navigation.wuxinsci.workers.dev/login?next=%2Fhome">进入平台首页 →</a><a class="button button-secondary" href="https://eco-security-patent-navigation.wuxinsci.workers.dev/login?next=%2Fcourse">查看课程体系</a></div>
+          <div class="hero-note">后端实例提供账号、专利数据与虚拟仿真服务 · 页面由 GitHub Pages 发布</div>
+        </div>
+        <div class="orbital" aria-label="生态安全数据可视化示意图"><div class="planet"></div><span class="orbit-label label-a">城市解析</span><span class="orbit-label label-b">专利导航</span><span class="orbit-label label-c">生态安全</span></div>
+      </section>
+
+      <section class="section" id="topics">
+        <div class="section-head"><div><div class="section-kicker">ECOLOGY × PATENT × EDUCATION</div><h2>13个生态安全技术领域</h2></div><p class="section-intro">按生态安全问题与技术链条重新组织检索入口，让每一条专利记录都能回到清晰的课程任务和技术语境。</p></div>
+        <div class="stats"><div class="stat"><strong>13,000+</strong><span>公开专利记录</span></div><div class="stat"><strong>13</strong><span>生态安全主题</span></div><div class="stat"><strong>337</strong><span>地级行政单元词典</span></div><div class="stat"><strong>5</strong><span>课程实践模块</span></div></div>
+        <div class="topics">
+          <article class="topic"><small>01</small><h3>生态监测与数字治理</h3><p>遥感、传感器、生态大数据与智能识别。</p></article>
+          <article class="topic"><small>02</small><h3>森林草原火灾</h3><p>森林健康、草原修复、林火监测与防控。</p></article>
+          <article class="topic"><small>03</small><h3>湿地、河湖与流域</h3><p>湿地恢复、河湖连通与水生态系统。</p></article>
+          <article class="topic"><small>04</small><h3>海洋与海岸带安全</h3><p>近岸生态、海洋污染、蓝碳与海岛修复。</p></article>
+          <article class="topic"><small>05</small><h3>生物多样性与生物安全</h3><p>物种保护、栖息地、外来入侵与种质资源。</p></article>
+          <article class="topic"><small>06</small><h3>大气污染与气候风险</h3><p>大气治理、温室气体、极端气候适应。</p></article>
+          <article class="topic"><small>07</small><h3>水污染防治与水安全</h3><p>饮用水、污水处理、地下水与水质监控。</p></article>
+          <article class="topic"><small>08</small><h3>土壤、农田与农业生态</h3><p>土壤修复、面源污染、耕地质量与绿色农业。</p></article>
+          <article class="topic"><small>09</small><h3>固废与循环经济</h3><p>固废处置、资源化利用、减量化与循环材料。</p></article>
+          <article class="topic"><small>10</small><h3>矿山与国土生态修复</h3><p>矿山地质环境、尾矿、边坡与国土空间修复。</p></article>
+          <article class="topic"><small>11</small><h3>自然灾害与环境应急</h3><p>洪涝、滑坡、火灾、污染事故与应急决策。</p></article>
+          <article class="topic"><small>12</small><h3>城市生态与人居环境</h3><p>海绵城市、噪声、热岛、绿色基础设施。</p></article>
+          <article class="topic"><small>13</small><h3>生态产品与绿色产业</h3><p>生态产品价值实现、绿色技术与产业转化。</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="course">
+        <div class="section-head"><div><div class="section-kicker">LEARNING PATHWAY</div><h2>从课程到创新创业</h2></div><p class="section-intro">把专利导航变成可操作的教学实践：学生从问题识别开始，完成检索、解析、地图分析与项目方案。</p></div>
+        <div class="pathway"><article class="path-card"><h3>课程体系</h3><p>生态安全问题识别 → 专利检索策略 → 数据规范化与城市解析 → 专利地图解读 → 导航报告表达。</p><div class="path-list"><span>知识产权基础</span><span>公开数据采集</span><span>空间分析</span><span>导航报告</span></div></article><article class="path-card"><h3>创新创业实践</h3><p>基于真实公开数据发现技术空白，形成生态安全技术方案、竞品分析、成果转化路径和项目路演材料。</p><div class="path-list"><span>技术机会识别</span><span>项目画布</span><span>成果转化</span><span>答辩演示</span></div></article></div>
+      </section>
+    </main>
+    <footer class="footer"><span>© 2025 中南林业科技大学 · 长沙遥测信息科技有限公司</span><span>生态安全领域专利导航课程体系构建与创新创业人才培养</span></footer>
+  </div>
+</body>
+</html>
