@@ -152,6 +152,40 @@ export async function getDatabase() {
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     )`),
+    database.prepare(`CREATE TABLE IF NOT EXISTS app_users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT NOT NULL UNIQUE,
+      email TEXT NOT NULL DEFAULT '',
+      display_name TEXT NOT NULL,
+      institution TEXT NOT NULL DEFAULT '',
+      role TEXT NOT NULL DEFAULT '学习者',
+      password_hash TEXT NOT NULL,
+      password_salt TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'approved',
+      audit_status TEXT NOT NULL DEFAULT 'approved',
+      audit_reason TEXT NOT NULL DEFAULT '',
+      last_login_at TEXT NOT NULL DEFAULT '',
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )`),
+    database.prepare("CREATE UNIQUE INDEX IF NOT EXISTS idx_app_users_username ON app_users(username)"),
+    database.prepare(`CREATE TABLE IF NOT EXISTS app_sessions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      token_hash TEXT NOT NULL UNIQUE,
+      user_id INTEGER NOT NULL,
+      expires_at TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )`),
+    database.prepare("CREATE INDEX IF NOT EXISTS idx_app_sessions_user_id ON app_sessions(user_id)"),
+    database.prepare("CREATE INDEX IF NOT EXISTS idx_app_sessions_expires_at ON app_sessions(expires_at)"),
+    database.prepare(`CREATE TABLE IF NOT EXISTS auth_audit_logs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT NOT NULL,
+      action TEXT NOT NULL,
+      result TEXT NOT NULL,
+      reason TEXT NOT NULL DEFAULT '',
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )`),
   ]);
 
   const patentColumns = await database.prepare("PRAGMA table_info(patents)").all<{ name: string }>();
