@@ -20,7 +20,7 @@ export default function WelcomePage() {
           <span className="brand-mark">E</span>
           <span>生态智图</span>
         </a>
-        <span className="project-tag">2025F002R · 教学与实践平台</span>
+        <span className="project-tag">2025FR002 · 教学与实践平台</span>
       </nav>
       <section className="welcome-content">
         <p className="eyebrow">ECOLOGICAL SECURITY · PATENT NAVIGATION</p>
