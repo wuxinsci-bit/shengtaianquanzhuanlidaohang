@@ -1,6 +1,7 @@
 import { getDatabase, INSERT_PATENT_SQL, patentBindings, PATENT_COLUMNS } from "@/db/bootstrap";
 import { ECO_DOMAINS, type PatentInput, type PatentRecord } from "@/app/lib/patents";
 import { resolvePrefectureCity } from "@/app/lib/city-resolver";
+import { requireApiUser } from "@/app/lib/app-auth";
 
 export const dynamic = "force-dynamic";
 
@@ -59,6 +60,7 @@ function validateInput(payload: Record<string, unknown>): PatentInput {
 
 export async function GET(request: Request) {
   try {
+    if (!await requireApiUser(request)) return Response.json({ error: "请先登录" }, { status: 401 });
     const database = await getDatabase();
     const url = new URL(request.url);
     const keyword = clean(url.searchParams.get("q"), 100);
@@ -101,6 +103,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    if (!await requireApiUser(request)) return Response.json({ error: "请先登录" }, { status: 401 });
     const payload = (await request.json()) as Record<string, unknown>;
     const patent = validateInput(payload);
     const database = await getDatabase();
