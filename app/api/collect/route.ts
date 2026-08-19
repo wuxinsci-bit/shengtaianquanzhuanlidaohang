@@ -1,6 +1,7 @@
 import { getDatabase, PATENT_COLUMNS } from "@/db/bootstrap";
 import { classifyPatent, type PatentRecord } from "@/app/lib/patents";
 import { resolvePrefectureCity } from "@/app/lib/city-resolver";
+import { requireApiUser } from "@/app/lib/app-auth";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,7 @@ function parseCsv(text: string, maxRows: number) {
 }
 
 export async function POST(request: Request) {
+  if (!await requireApiUser(request)) return Response.json({ error: "请先登录" }, { status: 401 });
   const database = await getDatabase();
   let jobId: number | null = null;
   try {
