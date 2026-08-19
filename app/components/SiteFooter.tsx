@@ -12,7 +12,7 @@ export function SiteFooter() {
         <a href="/platform">专利地图</a>
         <a href="https://mooc1.chaoxing.com/mooc-ans/course/portal/pZVsIQjqc-6iY5NMp68a0g==" target="_blank" rel="noreferrer">超星课程</a>
       </div>
-      <div className="footer-meta">项目编号：2025F002R<br />教学科研原型 · 数据以来源页为准</div>
+      <div className="footer-meta">项目编号：2025FR002<br />版权：中南林业科技大学 · 长沙遥测信息科技有限公司<br />教学科研原型 · 数据以来源页为准</div>
     </footer>
   );
 }
