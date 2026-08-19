@@ -1,6 +1,7 @@
 import { getDatabase, patentBindings, PATENT_COLUMNS } from "@/db/bootstrap";
 import { validateInput } from "../route";
 import type { PatentRecord } from "@/app/lib/patents";
+import { requireApiUser } from "@/app/lib/app-auth";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ async function patentId(params: Promise<{ id: string }>) {
 
 export async function PUT(request: Request, context: { params: Promise<{ id: string }> }) {
   try {
+    if (!await requireApiUser(request)) return Response.json({ error: "请先登录" }, { status: 401 });
     const id = await patentId(context.params);
     const patent = validateInput((await request.json()) as Record<string, unknown>);
     const values = patentBindings(patent);
@@ -34,6 +36,7 @@ export async function PUT(request: Request, context: { params: Promise<{ id: str
 
 export async function DELETE(_: Request, context: { params: Promise<{ id: string }> }) {
   try {
+    if (!await requireApiUser(_)) return Response.json({ error: "请先登录" }, { status: 401 });
     const id = await patentId(context.params);
     const database = await getDatabase();
     const result = await database.prepare("DELETE FROM patents WHERE id=? RETURNING id").bind(id).first<{ id: number }>();
