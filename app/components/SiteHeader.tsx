@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   ["/home", "平台首页"],
@@ -15,6 +15,16 @@ const links = [
 export function SiteHeader({ inverse = false }: { inverse?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<{ displayName: string; role: string } | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth/me", { cache: "no-store" }).then((response) => response.json()).then((result: { user?: { displayName: string; role: string } | null }) => setUser(result.user ?? null)).catch(() => setUser(null));
+  }, []);
+
+  async function logout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    window.location.href = "/login";
+  }
 
   return (
     <header className={`site-header ${inverse ? "site-header--inverse" : ""}`}>
@@ -30,7 +40,9 @@ export function SiteHeader({ inverse = false }: { inverse?: boolean }) {
           <a key={href} className={pathname === href.split("?")[0] ? "active" : ""} href={href} onClick={() => setOpen(false)}>{label}</a>
         ))}
       </nav>
-      <a className="nav-cta" href="/platform">进入工作台 <span>↗</span></a>
+      <div className="header-account">
+        {user ? <><span className="header-user">{user.displayName}<small>{user.role}</small></span><button className="header-logout" type="button" onClick={() => void logout()}>退出</button></> : <a className="nav-cta" href="/login">登录 <span>↗</span></a>}
+      </div>
     </header>
   );
 }
