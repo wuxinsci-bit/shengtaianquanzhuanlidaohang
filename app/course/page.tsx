@@ -2,8 +2,10 @@ import { ArrowRight, CheckCircle2, ExternalLink, FlaskConical, Map, Rocket, Sear
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { COURSE_MODULES } from "@/app/lib/patents";
+import { requireAppUser } from "@/app/lib/app-auth";
 
 export const metadata = { title: "课程体系", description: "生态安全专利导航课程体系与创新创业人才培养方案。" };
+export const dynamic = "force-dynamic";
 
 const practice = [
   [Search, "检索设计", "建立技术主题词、IPC/CPC 分类与排除词，形成可复现检索式。"],
@@ -12,7 +14,8 @@ const practice = [
   [Rocket, "创新孵化", "把技术空白转化为项目命题，完成知识产权布局和路演证据包。"],
 ];
 
-export default function CoursePage() {
+export default async function CoursePage() {
+  await requireAppUser("/course");
   return (
     <main className="inner-page">
       <SiteHeader />
