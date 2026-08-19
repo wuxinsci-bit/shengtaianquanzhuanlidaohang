@@ -2,13 +2,16 @@ import { ArrowRight, BookOpen, Database, FlaskConical, Lightbulb, Map, Play, Shi
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { COURSE_MODULES, ECO_DOMAINS, SCIENCE_RESOURCES } from "@/app/lib/patents";
+import { requireAppUser } from "@/app/lib/app-auth";
 
 export const metadata = {
   title: "平台首页",
   description: "生态安全全领域专利导航、课程体系、虚拟仿真与创新创业实践入口。",
 };
+export const dynamic = "force-dynamic";
 
-export default function PortalHome() {
+export default async function PortalHome() {
+  await requireAppUser("/home");
   return (
     <main>
       <section className="portal-hero">
