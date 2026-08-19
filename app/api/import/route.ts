@@ -1,6 +1,7 @@
 import { classifyPatent, ECO_DOMAINS, type PatentInput } from "@/app/lib/patents";
 import { resolvePrefectureCity } from "@/app/lib/city-resolver";
 import { getDatabase, patentBindings, UPSERT_PATENT_SQL } from "@/db/bootstrap";
+import { requireApiUser } from "@/app/lib/app-auth";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +45,7 @@ function statusFor(publicationNumber: string) {
 
 export async function POST(request: Request) {
   try {
+    if (!await requireApiUser(request)) return Response.json({ error: "请先登录" }, { status: 401 });
     const form = await request.formData();
     const file = form.get("file");
     const domain = clean(form.get("domain"), 40);
